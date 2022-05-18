@@ -5,10 +5,12 @@ const Banner = () => {
 
     return (
         <div>
-            <div class="hero min-h-screen bg-200">
+            <div class="hero min-h-screen ">
                 <div class="hero-content flex-col lg:flex-row-reverse">
-                    <img src={chair} class="max-w-sm rounded-lg" />
-                    <div>
+                    <div className="flex-1">
+                        <img src={chair} class="rounded-lg" />
+                    </div>
+                    <div className='flex-1'>
                         <h1 class="text-5xl font-bold">Your New Smile Starts Here</h1>
                         <p class="py-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the.</p>
                         <button class="btn btn-primary uppercase text-white font-bold bg-gradient-to-r from-secondary to-primary">Get Started</button>
