@@ -11,7 +11,7 @@ const Navbar = () => {
         <li><Link to='/login'>Login</Link></li>
     </>
     return (
-        <div className='px-12'>
+        <div>
             <div class="navbar bg-base-100">
                 <div class="navbar-start">
                     <div class="dropdown">
