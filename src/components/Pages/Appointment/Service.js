@@ -1,14 +1,14 @@
 import React from 'react';
 
-const Service = ({ service }) => {
+const Service = ({ service, setTeatment }) => {
     const { name, slots } = service;
 
     return (
         <div>
-            <div class="card w-96 bg-base-100 shadow-2xl">
-                <div class="card-body">
+            <div className="card w-96 bg-base-100 shadow-2xl">
+                <div className="card-body">
                     <div className='text-center'>
-                        <h2 class="text-xl text-secondary">{name}</h2>
+                        <h2 className="text-xl text-secondary">{name}</h2>
                         <p>
                             {
                                 slots.length > 0 ?
@@ -19,12 +19,16 @@ const Service = ({ service }) => {
                         </p>
                         <p>{slots.length} {slots.length > 1 ? 'spaces' : 'space'} availble </p>
                     </div>
-                    <div class="card-actions justify-center">
-                        <button disabled={slots.length === 0} class="btn btn-secondary text-white uppercase">Book Appointment</button>
+                    <div className="card-actions justify-center">
+
+                        <label htmlFor="booking-modal"
+                            disabled={slots.length === 0}
+                            onClick={() => setTeatment(service)}
+                            className="btn btn-secondary text-white uppercase">Book Appointment</label>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
