@@ -9,7 +9,7 @@ const AvailbleAppointments = ({ date }) => {
 
 
     useEffect(() => {
-        fetch('services.json')
+        fetch('http://localhost:5000/service')
             .then(Response => Response.json())
             .then(data => setServices(data))
     }, [])
@@ -23,17 +23,17 @@ const AvailbleAppointments = ({ date }) => {
                 {
                     services.map(service =>
                         <Service
-                            key={service._1}
+                            key={service._id}
                             service={service}
                             setTeatment={setTeatment}
                         ></Service>
                     )
                 }
             </div>
-            {teatment && <BookingModal 
-            date={date} 
-            teatment={teatment}
-            setTeatment={setTeatment}
+            {teatment && <BookingModal
+                date={date}
+                teatment={teatment}
+                setTeatment={setTeatment}
             ></BookingModal>}
         </div>
 

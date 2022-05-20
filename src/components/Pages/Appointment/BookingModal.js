@@ -1,8 +1,10 @@
-import { hasSelectionSupport } from '@testing-library/user-event/dist/utils';
 import { format } from 'date-fns';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
 
 const BookingModal = ({ date, teatment, setTeatment }) => {
+    const [user, loading, error] = useAuthState(auth);
     const { _id, name, slots } = teatment;
 
     const handleBooking = (event) => {
@@ -23,11 +25,15 @@ const BookingModal = ({ date, teatment, setTeatment }) => {
                         <input type="text" disabled value={format(date, 'PP')} className="input input-bordered  w-full max-w-xs" />
                         <select name='slot' className="select select-bordered w-full max-w-xs">
                             {
-                                slots.map(slot => <option key={slot.id} value={slot}>{slot}</option>)
+                                slots.map((slot, index) => <option
+                                    key={slot.index}
+                                    value={slot}>
+                                    {slot}
+                                </option>)
                             }
                         </select>
-                        <input type="text" name='name' placeholder="Your Name" className="input input-bordered w-full max-w-xs" />
-                        <input type="email" name='email' placeholder="Your Email" className="input input-bordered w-full max-w-xs" />
+                        <input type="text" name='name' disabled value={user.displayName} placeholder="Your Name" className="input input-bordered w-full max-w-xs" />
+                        <input type="email" disabled value={user.email} name='email' placeholder="Your Email" className="input input-bordered w-full max-w-xs" />
                         <input type="text" name='phone' placeholder="Phone Number" className="input input-bordered w-full max-w-xs" />
                         <input type="submit" value="Submit" className="btn btn-secondary w-full max-w-xs text-white" />
                     </form>
